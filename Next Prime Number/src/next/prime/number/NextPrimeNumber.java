@@ -17,29 +17,34 @@ public class NextPrimeNumber {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Enter any positive number");
         System.out.println("Press 'x' to exit");
 
-        Scanner scan = new Scanner(System.in);
-        int number = scan.nextInt();
+        Scanner read = new Scanner(System.in);
+        char endCharacter = read.next().charAt(0);
 
-        // initialise a counter
-        int count = 0;
+        do {
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Enter any positive number");
+            int number = scan.nextInt();
 
-        // iterate from 1 through to the entered number
-        for (int i = 1; i < number + 1; i++) {
-            //check the modulus of the entered number and the iterated numbers along the way and increase counter by one if each time the modulus equals zero
-            if (number % i == 0) {
-                count++;
+            // initialise a counter
+            int count = 0;
+
+            // iterate from 1 through to the entered number
+            for (int i = 1; i < number + 1; i++) {
+                //check the modulus of the entered number and the iterated numbers along the way and increase counter by one if each time the modulus equals zero
+                if (number % i == 0) {
+                    count++;
+                }
             }
-        }
 
-        // if count equals 2 at the end of the iteration, the the entered number must be a prime number because the value 2 would have come from the number been divded by one and itself
-        if (count == 2) {
-            System.out.println(number + " is a prime number");
-            // if the count value is anything else, then the number cannot be a prime number
-        } else {
-            System.out.println(number + " is not a prime number");
-        }
+            // if count equals 2 at the end of the iteration, the the entered number must be a prime number because the value 2 would have come from the number been divded by one and itself
+            if (count == 2) {
+                System.out.println(number + " is a prime number");
+                // if the count value is anything else, then the number cannot be a prime number
+            } else {
+                System.out.println(number + " is not a prime number");
+            }
+        } while (endCharacter != 'x');
     }
 }
