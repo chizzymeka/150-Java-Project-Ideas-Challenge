@@ -17,11 +17,7 @@ public class NextPrimeNumber {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Press 'x' to exit");
-
-        Scanner read = new Scanner(System.in);
-        char endCharacter = read.next().charAt(0);
-
+        
         do {
             Scanner scan = new Scanner(System.in);
             System.out.println("Enter any positive number");
@@ -45,6 +41,6 @@ public class NextPrimeNumber {
             } else {
                 System.out.println(number + " is not a prime number");
             }
-        } while (endCharacter != 'x');
+        } while (true);
     }
 }
