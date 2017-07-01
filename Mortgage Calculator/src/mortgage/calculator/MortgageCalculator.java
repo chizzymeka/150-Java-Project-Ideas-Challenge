@@ -19,15 +19,53 @@ public class MortgageCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+        // Obtain the borrow amount
         System.out.println("Please enter the amount you wish to borrow (£)");
-        double borrowAmount = scan.nextDouble();
+        double borrowAmount = 0;
+        try {
+            borrowAmount = scan.nextDouble();
+        } catch (Exception e) {
+            System.out.println("Please ensure you enter a positive value");
+            return;
+        }
+        if (borrowAmount < 5000) {
+            System.out.println("The borrow amount is too low");
+        }
+        if (borrowAmount < 1) {
+            System.out.println("The borrow amount cannot be negative");
+        }
 
-        System.out.println("Please enter the length of the mortgage");
-        double mortgageLength = scan.nextDouble();
+        // Obtain the length of the mortgage
+        System.out.println("Please enter the length of the mortgage (years)");
+        double mortgageLength = 0;
+        try {
+            mortgageLength = scan.nextDouble();
+        } catch (Exception e) {
+            System.out.println("Please ensure you enter a positive value");
+            return;
+        }
+        if (mortgageLength > 35) {
+            System.out.println("The mortgage length is too long");
+        }
+        if (mortgageLength < 1) {
+            System.out.println("The mortgage length cannot be negative");
+        }
         double period = mortgageLength * 12;
 
+        // Obtain the interest rate
         System.out.println("Please enter the interest rate (%)");
-        double interestRate = scan.nextDouble();
+        double interestRate = 0;
+        try {
+            interestRate = scan.nextDouble();
+        } catch (Exception e) {
+            System.out.println("Please ensure you enter a positive value");
+            return;
+        }
+        if (interestRate < 1) {
+            System.out.println("The interest rate cannot be negative");
+        } else if (interestRate > 100) {
+            System.out.println("The interest rate cannot be above 100%");
+        }
         double rate = (interestRate / 100) / 12;
 
         System.out.println("Your monthly payments will be £" + borrowAmount * (rate / (1 - Math.pow((1 + rate), -period))));
